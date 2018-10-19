@@ -47,6 +47,16 @@
     </div>
     <script src="../../common/js/jquery.js"></script>
     <script>
+      $(function() {
+        $('.menu__list > li').hover(function() {
+          // hoverの対象をmenu__listの中の大きいliに設定し(menu__list liにしてしまうとmenu_listの中にあるchildListの中のliも取得できてしまうから)
+          $(this).children('.menu__list__title').next().stop().slideDown();
+        }, function() {
+          $(this).children('.menu__list__title').next().stop().slideUp();
+        });
+      });
+          // そのliの子要素のmenu_list_titleをchildrenで取得し、その隣の要素のmenu_list_childListをnextで取得。menu_list_childListがスライドダウンするようにしてる。またtitleをhoverした回数分childListが表示されるアニメーションを中止するためstopメソッドを使用。
+          // nextの逆のメソッドはprev
       // 今回やるのはドロップメニューです。
       // メニューをhoverすると隠れている中のメニューが表示され、メニューから離れると中のメニューが非表示されるプログラムです。
       // [使用するメソッド]
